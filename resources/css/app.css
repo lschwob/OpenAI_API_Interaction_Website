@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: black;
+}
+
+.w-container {
+    max-width: 50%;
+}
+
+.h-container {
+    min-height: 80%;
+}
