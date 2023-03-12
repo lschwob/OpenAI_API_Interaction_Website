@@ -1,22 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex flex-col items-center justify-center h-screen">
-    <h1 class="text-3xl text-center font-bold tracking-tight text-white -mt-80">
+<div class="flex flex-col items-center justify-center min-h-screen">
+    <h1 class="text-3xl text-center font-bold tracking-tight text-white -mt-28 mb-10">
         Liste des IAs
     </h1>
-    <div class="grid grid-cols-4">
-            <div class="w-96 h-52 p-6 bg-white dark:bg-gray-900 border border-gray-600 rounded-lg shadow mx-auto my-10">
-                <a>
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">Test</h5>
+    <div class="grid grid-cols-4 row">
+        @foreach ($ias as $ia)
+        <div class="flex justify-center mx-12 mb-12">
+            <div
+              class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-gray-900 shadow-blue-900">
+              <a href="#!" data-te-ripple-init data-te-ripple-color="light">
+                <img
+                  class="rounded-t-lg"
+                  src="{{ $ia->image }}"
+                  alt="" />
+              </a>
+              <div class="p-6">
+                <h5
+                  class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                  {{  $ia->title  }}
+                </h5>
+                <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                    {{  $ia->description  }}
+                </p>
+                <a
+                  href="{{  $ia->link  }}"
+                  class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  Lancer
                 </a>
-                <p class="mb-3 font-normal text-gray-500">Lorem sqdq</p>
-                <a href="" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
-                    Read more
-                    <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
+              </div>
             </div>
+          </div>
+        @endforeach
     </div>
-    <p class="text-white">Il n'y a pas d'articles</p>
 </div>
 @endsection

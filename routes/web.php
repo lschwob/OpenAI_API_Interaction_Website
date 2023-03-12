@@ -19,3 +19,5 @@ Route::get('/mail', [IaController::class, 'mail_show'])->name('mail');
 Route::get('/ias', [IaController::class, 'ias_show'])->name('ias');
 Route::get('/about', [IaController::class, 'about'])->name('about');
 Route::get('/contact', [IaController::class, 'contact'])->name('contact');
+Route::post('/contact', [IaController::class, 'store_contact'])->name('contact.store');
+Route::get('/contact/success', [IaController::class, 'contact_success'])->name('contact.success');
