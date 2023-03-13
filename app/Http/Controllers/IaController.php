@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ia;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class IaController extends Controller
 {
@@ -61,6 +63,22 @@ class IaController extends Controller
         return view('contact-success');
     }
 
+    public function register()
+    {
+        return view('admin_signup');
+    }
 
+    public function store_register(Request $request)
+    {
+        $password = $request->password; // Récupérez le mot de passe à partir du formulaire
+        $hashedPassword = Hash::make($password);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $hashedPassword;
+        $user->save();
+        return view('index');
+    }
 
 }
