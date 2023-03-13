@@ -81,4 +81,25 @@ class IaController extends Controller
         return view('index');
     }
 
+    public function admin()
+    {
+        $this->authorize('is_admin', auth()->user());
+        return view('admin');
+    }
+
+    public function store_ia(Request $request)
+    {
+        
+        $this->authorize('is_admin', auth()->user());
+    
+        $ia = new Ia();
+        $ia->title = $request->title;
+        $ia->description = $request->description;
+        $ia->link = $request->link;
+        $ia->image = $request->image;
+        
+        $ia->save();
+
+        return redirect()->route('ias');
+    }
 }
