@@ -7,32 +7,18 @@
     </h1>
     <div class="grid grid-cols-4 row">
         @foreach ($ias as $ia)
-        <div class="flex justify-center mx-12 mb-12">
-            <div
-              class="block max-w-sm rounded-lg bg-white shadow-lg dark:bg-gray-900 shadow-blue-900">
-              <a href="#!" data-te-ripple-init data-te-ripple-color="light">
-                <img
-                  class="rounded-t-lg"
-                  src="{{ $ia->image }}"
-                  alt="" />
-              </a>
-              <div class="p-6">
-                <h5
-                  class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          <div class="rounded-2xl mr-8 bg-gradient-to-r from-blue-500 via-blue-800 to-purple-900 p-1 shadow-xl shadow-blue-900 hover:transition-transform hover:-translate-y-2 hover:translate-x-2">
+            <a class="block rounded-xl bg-black p-4 sm:p-6 lg:p-8" href="">
+              <div class="mt-16">
+                <h3 class="text-lg font-bold text-white sm:text-xl">
                   {{  $ia->title  }}
-                </h5>
-                <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-                    {{  $ia->description  }}
+                </h3>
+
+                <p class="mt-2 text-sm text-gray-500">
+                  {{  $ia->description  }}
                 </p>
-                <a
-                  href="{{  $ia->link  }}"
-                  class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
-                  data-te-ripple-init
-                  data-te-ripple-color="light">
-                  Lancer
-                </a>
               </div>
-            </div>
+            </a>
           </div>
         @endforeach
     </div>

@@ -1,4 +1,4 @@
-<footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800 mt-14 shadow-inner shadow-blue-900">
+<footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800 mt-20 shadow-inner shadow-blue-900">
     <div class="mx-auto max-w-screen-xl text-center">
         <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
             <svg class="mr-2 h-8" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
