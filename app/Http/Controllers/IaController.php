@@ -102,4 +102,36 @@ class IaController extends Controller
 
         return redirect()->route('ias');
     }
+
+    // use OpenAI\Configuration;
+    // use OpenAI\OpenAIApi;
+    // $configuration = new Configuration();
+    // $configuration->setApiKey(getenv('OPENAI_API_KEY'));
+
+    // $openai = new OpenAIApi($configuration);
+
+    // $texte_base = "Voici mon texte de base. ";
+
+    // $response = $openai->createCompletion(array(
+    //     'model' => 'text-davinci-002',
+    //     'prompt' => $texte_base . 'Ajoutez du texte à la fin.',
+    //     'temperature' => 0.7,
+    //     'max_tokens' => 50
+    // ));
+
+    // $texte_complet = $response->getChoices()[0]->getText();
+    // $texte_base .= $texte_complet;
+
+    // // Effectuez une nouvelle requête en utilisant le texte mis à jour
+    // $response2 = $openai->createCompletion(array(
+    //     'model' => 'text-davinci-002',
+    //     'prompt' => $texte_base . 'Ajoutez encore plus de texte.',
+    //     'temperature' => 0.7,
+    //     'max_tokens' => 50
+    // ));
+
+    // $texte_complet2 = $response2->getChoices()[0]->getText();
+    // $texte_base .= $texte_complet2;
+
+    // // Répétez autant de fois que nécessaire pour incrémenter le texte de base avec de nouvelles requêtes
 }

@@ -13,8 +13,7 @@
                 <h3 class="text-lg font-bold text-white sm:text-xl">
                   {{  $ia->title  }}
                 </h3>
-
-                <p class="mt-2 text-sm text-gray-500">
+                <p class="mt-2 text-sm text-gray-500 text">
                   {{  $ia->description  }}
                 </p>
               </div>

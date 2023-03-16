@@ -10,7 +10,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>Jarvis AI</title>
 </head>
-<body>
+<body class="bg-white text-black dark:bg-black">
     <x-navbar></x-navbar>
     <div class="container mx-auto">
         @yield('content')
