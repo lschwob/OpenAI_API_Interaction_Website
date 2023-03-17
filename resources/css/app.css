@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.background-waves {
+    background: url(../images/waves.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
 .w-container {
     max-width: 50%;
 }

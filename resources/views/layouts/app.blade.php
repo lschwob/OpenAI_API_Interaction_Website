@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 </head>
 <body class="bg-white text-black dark:bg-black">
     <x-navbar></x-navbar>
-    <div class="container mx-auto">
+    <div class="mx-auto">
         @yield('content')
     </div>
     <x-footer></x-footer>
