@@ -29,3 +29,9 @@
 .custom-shape-divider-top-1678739135 .shape-fill {
     fill: #ff0000;
 }
+
+@media screen and (max-width: 480px) {
+    footer {
+        display: none;
+    }
+}
