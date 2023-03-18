@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ia;
-use App\Models\Contact;
 use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Hash;
 
 class IaController extends Controller
@@ -33,11 +34,6 @@ class IaController extends Controller
     public function contact()
     {
         return view('contact');
-    }
-
-    public function mail_show()
-    {
-        return view('mail');
     }
 
     public function store_contact(Request $request)
@@ -103,35 +99,43 @@ class IaController extends Controller
         return redirect()->route('ias');
     }
 
-    // use OpenAI\Configuration;
-    // use OpenAI\OpenAIApi;
-    // $configuration = new Configuration();
-    // $configuration->setApiKey(getenv('OPENAI_API_KEY'));
+ 
+    // Infos pour openaiAPI https://github.com/openai-php/client
 
-    // $openai = new OpenAIApi($configuration);
+    // Views des IAs
 
-    // $texte_base = "Voici mon texte de base. ";
+    public function mail_show()
+    {
+        return view('mail', ['prompt' => '', 'message' => '']);
 
-    // $response = $openai->createCompletion(array(
-    //     'model' => 'text-davinci-002',
-    //     'prompt' => $texte_base . 'Ajoutez du texte à la fin.',
-    //     'temperature' => 0.7,
-    //     'max_tokens' => 50
-    // ));
+    }
 
-    // $texte_complet = $response->getChoices()[0]->getText();
-    // $texte_base .= $texte_complet;
 
-    // // Effectuez une nouvelle requête en utilisant le texte mis à jour
-    // $response2 = $openai->createCompletion(array(
-    //     'model' => 'text-davinci-002',
-    //     'prompt' => $texte_base . 'Ajoutez encore plus de texte.',
-    //     'temperature' => 0.7,
-    //     'max_tokens' => 50
-    // ));
+    // Formulaires des IAs
 
-    // $texte_complet2 = $response2->getChoices()[0]->getText();
-    // $texte_base .= $texte_complet2;
+    public function mail_form(Request $request)
+    {   
+        $request->validate([
+            'prompt' => 'required|min:3',
+        ]);
 
-    // // Répétez autant de fois que nécessaire pour incrémenter le texte de base avec de nouvelles requêtes
+        $texte_base =  "Tu es un assistant dans la rédaction de très bons mails. Tu dois aider un utilisateur à rédiger un mail. 
+                        Je vais te donner des indications et tu devras écrire un partir de ces indications. 
+                        Ne mentionne rien de plus que ce qui est inscrit dans les indications. Voici les indications : ";
+
+        $response = Openai::chat()->create([
+            'model' => 'gpt-3.5-turbo',
+            'messages' => [
+                ['role' => 'user', 'content' => $texte_base . $request->prompt],
+            ],
+        ]);
+        
+        $response->id; // 'chatcmpl-6pMyfj1HF4QXnfvjtfzvufZSQq6Eq'
+        $response->object; // 'chat.completion'
+        $response->created; // 1677701073
+        $response->model; // 'gpt-3.5-turbo-0301'
+
+        $generated_text = $response->choices[0]->message->content;
+        return view('mail', ['prompt' => $request->prompt, 'message' => $generated_text]);
+    }
 }

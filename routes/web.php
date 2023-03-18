@@ -18,7 +18,6 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', [IaController::class, 'index'])->name('home');
 Route::get('/ias', [IaController::class, 'ias_show'])->name('ias');
-Route::get('/ias/mail', [IaController::class, 'mail_show'])->name('mail');
 Route::get('/about', [IaController::class, 'about'])->name('about');
 Route::get('/contact', [IaController::class, 'contact'])->name('contact');
 Route::post('/contact', [IaController::class, 'store_contact'])->name('contact.store');
@@ -30,3 +29,7 @@ Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.log
 // Route::post('/admin/signup', [IaController::class, 'store_register'])->name('register.store');
 Route::get('/admin', [IaController::class, 'admin'])->name('admin');
 Route::post('/admin', [IaController::class, 'store_ia'])->name('ia.store');
+
+//Ias routes
+Route::get('/ias/mail_gen', [IaController::class, 'mail_show'])->name('mail');
+Route::post('/ias/mail_gen', [IaController::class, 'mail_form'])->name('mail_form');
