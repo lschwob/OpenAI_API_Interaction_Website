@@ -5,7 +5,7 @@
   <h1 class="text-3xl text-center font-bold tracking-tight text-white mt-10 mb-8 sm:mb-10 max-lg:mt-24">
     Liste des IAs
   </h1>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8 mb-10">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8 mb-10 w-[90%]">
     @foreach ($ias as $ia)
       <div class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden sm:hover:translate-x-2 hover:-translate-y-2 hover:shadow-xl max-sm:shadow-sm hover:shadow-blue-600 transition-all">
         <a href="{{ $ia->link }}">
