@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <title>AskWise</title>
 </head>
 <body class="bg-white text-black dark:bg-black">
@@ -17,4 +19,14 @@
     </div>
     <x-footer></x-footer>
 </body>
+    <script>
+
+        const menu = document.getElementById('menu')
+        const navlinks = document.getElementById('navlinks')
+
+        menu.addEventListener('click', () => {
+            navlinks.classList.toggle("mobile-menu"); 
+        });
+
+    </script>
 </html>
