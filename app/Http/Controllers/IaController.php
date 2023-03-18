@@ -116,12 +116,13 @@ class IaController extends Controller
     public function mail_form(Request $request)
     {   
         $request->validate([
-            'prompt' => 'required|min:3',
+            'prompt' => 'required|min:10',
         ]);
 
         $texte_base =  "Tu es un assistant dans la rédaction de très bons mails. Tu dois aider un utilisateur à rédiger un mail. 
                         Je vais te donner des indications et tu devras écrire un partir de ces indications. 
-                        Ne mentionne rien de plus que ce qui est inscrit dans les indications. Voici les indications : ";
+                        Ne mentionne rien de plus que ce qui est inscrit dans les indications. Si tu ne peux pas répondre sans indication supplémentaire, répond simplement que tu manques d'information.
+                        Voici les indications : ";
 
         $response = Openai::chat()->create([
             'model' => 'gpt-3.5-turbo',
