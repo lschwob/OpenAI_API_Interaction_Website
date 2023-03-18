@@ -7,7 +7,7 @@
   </h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-8 mb-10">
     @foreach ($ias as $ia)
-      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-scroll hover:translate-x-2 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-600 transition-all">
+      <div class="bg-white dark:bg-gray-800 rounded-lg overflow-scroll sm:hover:translate-x-2 hover:-translate-y-2 hover:shadow-xl max-sm:shadow-sm hover:shadow-blue-600 transition-all">
         <a href="{{ $ia->link }}">
           <div class="bg-gray-200 dark:bg-gray-700 h-56 sm:h-64 md:h-72 lg:h-80 flex-shrink-0">
             <img class="w-full h-full object-cover" src="{{ $ia->image }}" alt="{{ $ia->title }}">
@@ -21,7 +21,4 @@
     @endforeach
   </div>
 </div>
-
-
-
 @endsection
