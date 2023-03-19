@@ -106,7 +106,34 @@ class IaController extends Controller
 
     public function mail_show()
     {
-        return view('mail', ['prompt' => '', 'message' => '']);
+        //Utilise le retour de la fonction mail_form pour afficher le prompt
+        $prompt = session('prompt');
+        $message = session('message');
+        if ($prompt == null) {
+            $prompt = "";
+        }
+        if ($message == null) {
+            $message = "";
+        }
+        return view('/ias/mail', ['prompt' => $prompt, 'message' => $message]);
+
+    }
+
+    public function image()
+    {   
+        //Utilise le retour de la fonction image_form pour afficher le prompt
+        $prompt = session('prompt');
+        $message = session('message');
+
+        if ($prompt == null) {
+            $prompt = "";
+        }
+
+        if ($message == null) {
+            $message = "";
+        }
+
+        return view('/ias/image', ['prompt' => $prompt, 'message' => $message]);
 
     }
 
@@ -137,6 +164,31 @@ class IaController extends Controller
         $response->model; // 'gpt-3.5-turbo-0301'
 
         $generated_text = $response->choices[0]->message->content;
-        return view('mail', ['prompt' => $request->prompt, 'message' => $generated_text]);
+        return redirect()->route('mail')->with(['prompt' => $request->prompt, 'message' => $generated_text]);
     }
+
+    public function image_form(Request $request) {
+
+        $request->validate([
+            'prompt' => 'required|min:10',
+        ]);
+
+        $response = Openai::images()->create([
+            'prompt' => $request->prompt,
+            'n' => 1,
+            'size' => '256x256',
+            'response_format' => 'url',
+        ]);
+        
+        $response->created; // 1589478378
+        
+        foreach ($response->data as $data) {
+            $data->url; // 'https://oaidalleapiprodscus.blob.core.windows.net/private/...'
+            $data->b64_json; // null
+        }
+        
+        $response->toArray(); // ['created' => 1589478378, data => ['url' => 'https://oaidalleapiprodscus...', ...]]
+        return redirect()->route('image')->with(['prompt' => $request->prompt, 'message' => $response->data[0]->url]);
+    }
+
 }

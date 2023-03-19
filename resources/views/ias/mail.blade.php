@@ -1,12 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<section class="bg-[url('../../public/bg-waves-white.svg')] dark:bg-[url('../../public/bg-waves.svg')] bg-cover min-h-screen w-full pt-32 selection:bg-green-600 selection:text-white">
+<section class="bg-[url('../../public/bg-waves-white.svg')] dark:bg-[url('../../public/bg-waves.svg')] bg-cover min-h-screen w-full pt-32 selection:bg-green-600 selection:text-white max-lg:pb-10 max-2xl:pb-10">
     <div class="py-8 lg:py-16 px-4 mx-auto max-lg:w-[80%] max-w-screen-md max-h-screen rounded-xl shadow-2xl shadow-primary-900 backdrop-blur-xl">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Mail Generator</h2>
         <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Besoin d'écrire un mail rapidement ? Donnez-nous les indications nécessaires et on s'occupe du reste !</p>
         <form action="{{ route('mail_form') }}" method="POST" class="space-y-8">
             @csrf
+            @if ($errors->any())
+            <div class="p-4 bg-red-500 text-white rounded-lg">
+                <ul>
+                    <li>Les indications sont trop courtes... Vous devez entrer au moins 10 caractères.</li>
+                </ul>
+            </div>
+            @endif
             <label for="prompt" class="block m-0 text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">Indications</label>
             <div class="flex flex-auto m-0 h-11">
                 <textarea type="prompt" name="prompt" id="prompt" class="flex-1 mr-2 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Ecris à mon patron que je serais en retard ce matin..." required style="resize: none;">{{ $prompt }}</textarea>

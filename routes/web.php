@@ -33,3 +33,5 @@ Route::post('/admin', [IaController::class, 'store_ia'])->name('ia.store');
 //Ias routes
 Route::get('/ias/mail_gen', [IaController::class, 'mail_show'])->name('mail');
 Route::post('/ias/mail_gen', [IaController::class, 'mail_form'])->name('mail_form');
+Route::get('/ias/image', [IaController::class, 'image'])->name('image');
+Route::post('/ias/image', [IaController::class, 'image_form'])->name('image_form');
