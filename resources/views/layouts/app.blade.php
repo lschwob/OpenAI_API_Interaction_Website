@@ -19,7 +19,7 @@
 </head>
 <body class="bg-white text-black dark:bg-black">
     <x-navbar></x-navbar>
-    <div class="mx-auto">
+    <div id="content" class="mx-auto">
         @yield('content')
     </div>
     <x-footer></x-footer>
@@ -28,9 +28,18 @@
 
         const menu = document.getElementById('menu')
         const navlinks = document.getElementById('navlinks')
+        const content = document.getElementById('content')
 
         menu.addEventListener('click', () => {
-            navlinks.classList.toggle("mobile-menu"); 
+            navlinks.classList.toggle("mobile-menu");
+            //Wait for the timeout once every 2clicks
+            if (navlinks.classList.contains("mobile-menu")) {
+                setTimeout(() => {
+                    content.style.display = "none";
+                }, 500);
+            } else {
+                content.style.display = "block";
+            }
         });
 
     </script>

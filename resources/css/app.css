@@ -54,8 +54,21 @@
         margin-left: 0;
     }
 
+    .content-ias {
+        margin-left: 0;
+    }
+
+    .content-ias.mobile-menu {
+        transform: translateX(100%);
+    }
+
+    .content-ias.no-display {
+        display: none;
+    }
+
     .transition-menu {
         transition: all 0.5s ease-in-out;
     }
+
 }
 
