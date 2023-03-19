@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use getID3;
 
 class IaController extends Controller
 {
@@ -209,9 +210,11 @@ class IaController extends Controller
     }
 
     public function audio_form_explain(Request $request) {
+
         $request->validate([
-            'audio' => 'required',
+            'audio' => 'required|mimes:mp3|max_duration:30',
         ]);
+        
     
         if ($request->hasFile('audio')) {
             // Stocker le fichier dans le dossier temporaire
