@@ -5,8 +5,10 @@
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">AskWise</span>
       </a>
       <ion-icon name="menu-outline" id="menu" class="lg:hidden absolute text-5xl top-9 right-10 text-blue-500 z-40 cursor-pointer select-none"></ion-icon>
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white lg:hidden absolute top-11 left-24 z-40 select-none">AskWise</span>
-      <img src="{{ asset('askwiselogo.png') }}" class="mr-3 h-12 self-center lg:hidden absolute top-8 left-10 z-40 select-none" alt="Askwise Logo" />
+      <a href="{{ route('home') }}">
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white lg:hidden absolute top-11 left-24 z-40 select-none">AskWise</span>
+        <img src="{{ asset('askwiselogo.png') }}" class="mr-3 h-12 self-center lg:hidden absolute top-8 left-10 z-40 select-none" alt="Askwise Logo" />
+      </a>
       <div id="navlinks" class="max-lg:absolute flex max-lg:bg-[url('../../public/bg-waves-white.svg')] dark:max-lg:bg-[url('../../public/bg-waves.svg')] max-lg:bg-cover max-lg:bg-center max-lg:w-full max-lg:h-[100vh] max-lg:top-0 max-lg:left-0 lg:ml-4 lg:mr-28 justify-center items-center lg:mx-auto lg:flex lg:w-auto lg:order-1 navlink transition-menu z-10">
           <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:mr-64 justify-center max-lg:text-center max-lg:text-2xl selection:bg-green-600 selection:text-white">
             <li>
