@@ -8,6 +8,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class IaController extends Controller
 {
@@ -134,7 +135,23 @@ class IaController extends Controller
         }
 
         return view('/ias/image', ['prompt' => $prompt, 'message' => $message]);
+    }
 
+    public function audio()
+    {
+        //Utilise le retour de la fonction audio_form pour afficher le prompt
+        $prompt = session('prompt');
+        $message = session('message');
+
+        if ($prompt == null) {
+            $prompt = "";
+        }
+
+        if ($message == null) {
+            $message = "";
+        }
+
+        return view('/ias/audio', ['message' => $message]);
     }
 
 
@@ -189,6 +206,60 @@ class IaController extends Controller
         
         $response->toArray(); // ['created' => 1589478378, data => ['url' => 'https://oaidalleapiprodscus...', ...]]
         return redirect()->route('image')->with(['prompt' => $request->prompt, 'message' => $response->data[0]->url]);
+    }
+
+    public function audio_form_explain(Request $request) {
+        $request->validate([
+            'audio' => 'required',
+        ]);
+    
+        if ($request->hasFile('audio')) {
+            // Stocker le fichier dans le dossier temporaire
+            $path = $request->file('audio')->store('temp');
+            // Récupérer le chemin d'accès complet du fichier stocké
+            $path = storage_path('app/' . $path);
+    
+            $response = Openai::audio()->transcribe([
+                'model' => 'whisper-1',
+                'file' => fopen($path, 'r'),
+                'response_format' => 'verbose_json',
+            ]);
+            
+            $response->task; // 'transcribe'
+            $response->language; // 'english'
+            $response->duration; // 2.95
+            $response->text; // 'Hello, how are you?'
+            
+            $response->toArray(); // ['task' => 'transcribe', ...]
+            
+            // Supprimer le fichier temporaire après utilisation
+            unlink($path);
+
+            // Utiliser le texte généré pour le prompt
+            $texte_base =  "Je vais te donner un texte qui retranscrit un audio et tu devras le résumer sans oublier aucun détail et en l'explicant le mieux possible. 
+                            Ne mentionne rien de plus que ce qui est inscrit dans le texte. N'invente rien de plus au texte. Lorsque tu mentionnes le texte utilise le mot 'audio' plutôt que 'texte'.
+                            Voici le texte : ";
+
+            $text = Openai::chat()->create([
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => $texte_base . $response->text],
+                ],
+            ]);
+            
+            $text->id; // 'chatcmpl-6pMyfj1HF4QXnfvjtfzvufZSQq6Eq'
+            $text->object; // 'chat.completion'
+            $text->created; // 1677701073
+            $text->model; // 'gpt-3.5-turbo-0301'
+    
+            $generated_text = $text->choices[0]->message->content;
+
+        } else {
+            // Le fichier n'a pas été téléchargé
+            $generated_text = "";
+        }
+    
+        return redirect()->route('translate')->with(['message' => $generated_text]);
     }
 
 }
