@@ -14,6 +14,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/9f48a31df7.js" crossorigin="anonymous"></script>
     {{--  --}}
+    <link rel="icon" type="image/png" href="{{ asset('askwiselogo.ico') }}" />
     
     <title>AskWise</title>
 </head>
