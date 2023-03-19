@@ -35,5 +35,5 @@ Route::get('/ias/mail_gen', [IaController::class, 'mail_show'])->name('mail');
 Route::post('/ias/mail_gen', [IaController::class, 'mail_form'])->name('mail_form');
 Route::get('/ias/image', [IaController::class, 'image'])->name('image');
 Route::post('/ias/image', [IaController::class, 'image_form'])->name('image_form');
-Route::get('/ias/translate', [IaController::class, 'audio'])->name('translate');
-Route::post('/ias/translate', [IaController::class, 'audio_form_explain'])->name('translate_form');
+Route::get('/ias/audio_explainer', [IaController::class, 'audio'])->name('audio');
+Route::post('/ias/audio_explainer', [IaController::class, 'audio_form_explain'])->name('audio_explain_form');

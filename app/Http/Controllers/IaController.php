@@ -262,7 +262,7 @@ class IaController extends Controller
             $generated_text = "";
         }
     
-        return redirect()->route('translate')->with(['message' => $generated_text]);
+        return redirect()->route('audio')->with(['message' => $generated_text]);
     }
 
 }
