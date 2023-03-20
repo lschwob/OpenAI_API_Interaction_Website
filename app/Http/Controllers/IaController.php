@@ -164,7 +164,7 @@ class IaController extends Controller
             'prompt' => 'required|min:10',
         ]);
 
-        $texte_base =  "Tu es un assistant dans la rédaction de très bons mails. Tu dois aider un utilisateur à rédiger un mail. 
+        $texte_base =  "Tu es AskWise, un assistant dans la rédaction de très bons mails. Tu dois aider un utilisateur à rédiger un mail. 
                         Je vais te donner des indications et tu devras écrire un partir de ces indications. 
                         Ne mentionne rien de plus que ce qui est inscrit dans les indications. Si tu ne peux pas répondre sans indication supplémentaire, répond simplement que tu manques d'information.
                         Voici les indications : ";
@@ -239,7 +239,8 @@ class IaController extends Controller
             unlink($path);
 
             // Utiliser le texte généré pour le prompt
-            $texte_base =  "Je vais te donner un texte qui retranscrit un audio et tu devras le résumer sans oublier aucun détail et en l'explicant le mieux possible. 
+            $texte_base =  "Tu es AskWise, un excellent assistant. 
+                            Je vais te donner un texte qui retranscrit un audio et tu devras le résumer sans oublier aucun détail et en l'expliquant le mieux possible. 
                             Ne mentionne rien de plus que ce qui est inscrit dans le texte. N'invente rien de plus au texte. Lorsque tu mentionnes le texte utilise le mot 'audio' plutôt que 'texte'.
                             Voici le texte : ";
 

@@ -36,6 +36,7 @@
         const menu = document.getElementById('menu')
         const navlinks = document.getElementById('navlinks')
         const content = document.getElementById('content')
+        const loader = document.getElementById("loader");
 
         menu.addEventListener('click', () => {
             navlinks.classList.toggle("mobile-menu");
