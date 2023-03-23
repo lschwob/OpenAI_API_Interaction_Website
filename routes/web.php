@@ -19,6 +19,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', [IaController::class, 'index'])->name('home');
 Route::get('/ias', [IaController::class, 'ias_show'])->name('ias');
 Route::get('/about', [IaController::class, 'about'])->name('about');
+Route::get('/products', [IaController::class, 'products'])->name('products');
 Route::get('/contact', [IaController::class, 'contact'])->name('contact');
 Route::post('/contact', [IaController::class, 'store_contact'])->name('contact.store');
 Route::get('/contact/success', [IaController::class, 'contact_success'])->name('contact.success');

@@ -9,8 +9,8 @@
         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white lg:hidden absolute top-11 left-24 z-40 select-none">AskWise</span>
         <img src="{{ asset('askwiselogo.webp') }}" class="mr-3 h-12 self-center lg:hidden absolute top-8 left-10 z-40 select-none" alt="Askwise Logo" />
       </a>
-      <div id="navlinks" class="max-lg:absolute flex max-lg:bg-[url('../../public/bg-waves-white.svg')] dark:max-lg:bg-[url('../../public/bg-waves.svg')] max-lg:bg-cover max-lg:bg-center max-lg:w-full max-lg:h-[100vh] max-lg:top-0 max-lg:left-0 lg:ml-4 lg:mr-28 justify-center items-center lg:mx-auto lg:flex lg:w-auto lg:order-1 navlink transition-menu z-10">
-          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0 lg:mr-64 justify-center max-lg:text-center max-lg:text-2xl selection:bg-green-600 selection:text-white">
+      <div id="navlinks" class="max-lg:absolute flex max-lg:bg-[url('../../public/bg-waves-white.svg')] dark:max-lg:bg-[url('../../public/bg-waves.svg')] max-lg:bg-cover max-lg:bg-center max-lg:w-full max-lg:h-[100vh] max-lg:top-0 max-lg:left-0 lg:ml-4 lg:mr-10 justify-center items-center lg:mx-auto lg:flex lg:w-auto lg:order-1 navlink transition-menu z-10">
+          <ul class="flex flex-col mt-4 font-medium lg:flex-row max-lg:space-y-4 lg:space-x-10 lg:mt-0 lg:mr-64 justify-center max-lg:text-center max-lg:text-2xl selection:bg-green-600 selection:text-white">
             <li>
               @if(\Illuminate\Support\Str::of(url()->current())->contains(['ias/']))
                 <a href="{{ route('ias') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700 lg:hidden">Previous Page</a>
@@ -18,6 +18,9 @@
             </li>
             <li>
               <a href="{{ route('home') }}" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded lg:bg-transparent lg:text-blue-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
+            </li>
+            <li>
+              <a href="{{ route('products') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Products</a>
             </li>
             <li>
               <a href="{{ route('about') }}" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:hover:text-blue-700 lg:p-0 lg:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About</a>

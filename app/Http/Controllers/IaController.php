@@ -33,6 +33,11 @@ class IaController extends Controller
         return view('about');
     }
 
+    public function products()
+    {
+        return view('products');
+    }
+
     public function contact()
     {
         return view('contact');
