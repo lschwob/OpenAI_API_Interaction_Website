@@ -38,6 +38,11 @@ class IaController extends Controller
         return view('products');
     }
 
+    public function pro()
+    {
+        return view('/pro/test');
+    }
+
     public function contact()
     {
         return view('contact');

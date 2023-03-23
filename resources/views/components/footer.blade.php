@@ -13,7 +13,7 @@
                 <a href="{{ route('about') }}" class="mr-4 hover:underline md:mr-6 ">About</a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Premium</a>
+                <a href="{{ route('products') }}" class="mr-4 hover:underline md:mr-6">Products</a>
             </li>
             <li>
                 <a href="#" class="mr-4 hover:underline md:mr-6">FAQs</a>

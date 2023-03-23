@@ -31,6 +31,9 @@ Route::get('/admin/logout', [LoginController::class, 'logout'])->name('admin.log
 Route::get('/admin', [IaController::class, 'admin'])->name('admin');
 Route::post('/admin', [IaController::class, 'store_ia'])->name('ia.store');
 
+//Routes pro
+// Route::get('/pro', [IaController::class, 'pro'])->name('pro');
+
 //Ias routes
 Route::get('/ias/mail_gen', [IaController::class, 'mail_show'])->name('mail');
 Route::post('/ias/mail_gen', [IaController::class, 'mail_form'])->name('mail_form');

@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    background: white; /* color of the tracking area */
+    border-radius: 20px; /* roundness of the tracking area */
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #1974E9; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
+
+
 .background-waves {
     background: url(../images/waves.png) no-repeat center center fixed;
     background-size: cover;

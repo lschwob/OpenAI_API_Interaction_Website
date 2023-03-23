@@ -4,7 +4,7 @@
         <section>
             <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 max-lg:py-36">
                 <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-                    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Imaginé pour des business comme le votre !</h2>
+                    <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Imaginé pour des business comme le vôtre !</h2>
                     <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Askwise atteint de nouveaux sommets ! L'accès à tous les meilleurs outils créés par nos soins est à portée de votre clique...</p>
                 </div>
                 <div class="space-y-8 lg:grid lg:grid-cols-1 sm:gap-6 xl:gap-10 lg:space-y-0">
@@ -44,7 +44,7 @@
                                 <span>Interface <span class="font-semibold">dédiée</span> et <span class="font-semibold">simple</span> d'utilisation</span>
                             </li>
                         </ul>
-                        <a href="#" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">Découvrir</a>
+                        <a href="#" class="text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:text-white  dark:focus:ring-primary-900">En Dévelopement</a>
                     </div>
                 </div>
             </div>
