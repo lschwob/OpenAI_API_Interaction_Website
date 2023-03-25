@@ -5,7 +5,7 @@
     <div class="py-8 lg:py-16 px-4 mx-auto max-lg:w-[80%] max-w-screen-md max-h-screen rounded-xl shadow-2xl shadow-primary-900 backdrop-blur-xl">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Image Generator</h2>
         <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Vous pouvez tout créer ! Il vous suffit d'entrer les indications nécessaires pour créer votre image.</p>
-        <form id="form" action="" method="POST" class="space-y-8" enctype='multipart/form-data'>
+        <form id="form" action="" method="POST" class="space-y-8 h-auto mb-6" enctype='multipart/form-data'>
             @csrf
             @if ($errors->any())
             <div class="p-4 bg-red-500 text-white rounded-lg">
