@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use getID3;
 use App\Models\Ia;
 use App\Models\User;
 use App\Models\Contact;
+use Spatie\PdfToText\Pdf;
 use Illuminate\Http\Request;
+use Smalot\PdfParser\Parser;
 use OpenAI\Laravel\Facades\OpenAI;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use getID3;
 
 class IaController extends Controller
 {
@@ -165,6 +167,22 @@ class IaController extends Controller
         return view('/ias/audio', ['message' => $message]);
     }
 
+    public function pdf_view()
+    {
+        $prompt = session('prompt');
+        $message = session('message');
+
+        if ($prompt == null) {
+            $prompt = "";
+        }
+
+        if ($message == null) {
+            $message = "";
+        }
+
+        return view('/ias/pdf', ['message' => $message]);
+    }
+
 
     // Formulaires des IAs
 
@@ -274,6 +292,53 @@ class IaController extends Controller
         }
     
         return redirect()->route('audio')->with(['message' => $generated_text]);
+    }
+
+    public function pdf_to_text(Request $request) {
+        
+   
+
+        if ($request->hasFile('pdf')) {
+            // Stocker le fichier dans le dossier temporaire
+            $path = $request->file('pdf')->store('temp');
+            // Récupérer le chemin d'accès complet du fichier stocké
+            $path = storage_path('app/' . $path);
+
+            $config = new \Smalot\PdfParser\Config();
+            $config->setHorizontalOffset('');
+
+            $parser = new \Smalot\PdfParser\Parser([], $config);
+            $pdf = $parser->parseFile($path);
+            $text = $pdf->getText();
+
+            unlink($path);
+
+            if(strlen($text) > 4000) {
+                $text = substr($text, 0, 4000);
+            }
+
+            $texte_base =  "Tu es AskWise, un assistant dans l'analyse et dans la création de résumé à partir d'un fichier pdf. Tu dois aider un utilisateur à créer un résumé d'un pdf. 
+                        Je vais te donner la retranscription en texte du pdf et tu devras en faire un résumé en détaillant les points importants. 
+                        N'invente rien de plus au texte. 
+                        Voici la retranscription texte du pdf : ";
+            
+            $response = Openai::chat()->create([
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => $texte_base . $text],
+                ],
+            ]);
+
+            $response->id; // 'chatcmpl-6pMyfj1HF4QXnfvjtfzvufZSQq6Eq'
+            $response->object; // 'chat.completion'
+            $response->created; // 1677701073
+            $response->model; // 'gpt-3.5-turbo-0301'
+    
+            $generated_text = $response->choices[0]->message->content;
+
+            return redirect()->route('pdf')->with(['message' => $generated_text]);
+        }
+        
     }
 
 }

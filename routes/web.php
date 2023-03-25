@@ -41,3 +41,5 @@ Route::get('/ias/image', [IaController::class, 'image'])->name('image');
 Route::post('/ias/image', [IaController::class, 'image_form'])->name('image_form');
 Route::get('/ias/audio_explainer', [IaController::class, 'audio'])->name('audio');
 Route::post('/ias/audio_explainer', [IaController::class, 'audio_form_explain'])->name('audio_explain_form');
+Route::get('/ias/pdf_explainer', [IaController::class, 'pdf_view'])->name('pdf');
+Route::post('/ias/pdf_explainer', [IaController::class, 'pdf_to_text'])->name('pdf_to_text');
