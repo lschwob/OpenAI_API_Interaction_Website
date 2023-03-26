@@ -117,6 +117,10 @@ class IaController extends Controller
     // Infos pour openaiAPI https://github.com/openai-php/client
 
     // Views des IAs
+    public function chatbot()
+    {
+        return view('/ias/chatbot');
+    }
 
     public function mail_show()
     {

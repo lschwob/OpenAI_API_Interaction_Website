@@ -38,6 +38,7 @@ Route::get('/ias/blog_intro', [FineTuningController::class, 'blog_intro'])->name
 Route::post('/ias/blog_intro', [FineTuningController::class, 'blog_intro_form'])->name('blog_intro_form');
 
 //Ias routes
+Route::get('/ias/chatbot', [IaController::class, 'chatbot'])->name('chatbot');
 Route::get('/ias/mail_gen', [IaController::class, 'mail_show'])->name('mail');
 Route::post('/ias/mail_gen', [IaController::class, 'mail_form'])->name('mail_form');
 Route::get('/ias/image', [IaController::class, 'image'])->name('image');

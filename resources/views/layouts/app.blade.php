@@ -15,6 +15,7 @@
     <script src="https://kit.fontawesome.com/9f48a31df7.js" crossorigin="anonymous"></script>
     {{--  --}}
     <link rel="icon" type="image/png" href="{{ asset('askwiselogo.ico') }}" />
+    @livewireStyles
     
     <title>AskWise</title>
 </head>
@@ -30,6 +31,7 @@
         @yield('content')
     </div>
     <x-footer></x-footer>
+    @livewireScripts
 </body>
     <script>
 
