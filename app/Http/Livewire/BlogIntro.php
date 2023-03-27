@@ -34,20 +34,6 @@ class BlogIntro extends Component
 
         $prompt = $this->input;
 
-        $completion = OpenAI::completions()->create([
-            'model' => 'text-ada-001',
-            'prompt' => "Je vais te donner le titre d'un article de blog et tu vas m'écrire une introduction accrocheuse pour cet article : " . $prompt . "Mentionne uniquement des choses qui pourraient concerner l'article et rien d'autre.",
-            'temperature' => 0.8,
-            'top_p' => 0.5,
-            'n' => 1,
-            'stream' => false,
-            'max_tokens' => 1500,
-            'stop' => [".\n", ".\n"]
-        ]);
-
-        $text = $completion->choices[0]->text;
-
-
         $texte_base = "Je vais te donner le titre d'un article de blog et tu vas m'écrire une introduction accrocheuse pour cet article : " . $prompt . "Mentionne uniquement des choses qui pourraient concerner l'article et rien d'autre";
 
         $responses = array();
