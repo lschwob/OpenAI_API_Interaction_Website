@@ -33,8 +33,8 @@ class BlogIntro extends Component
         $this->responses = [];
 
         $prompt = $this->input;
-        
-        $completion = Openai::completions()->create([
+
+        $completion = OpenAI::completions()->create([
             'model' => 'text-ada-001',
             'prompt' => "Je vais te donner le titre d'un article de blog et tu vas m'écrire une introduction accrocheuse pour cet article : " . $prompt . "Mentionne uniquement des choses qui pourraient concerner l'article et rien d'autre.",
             'temperature' => 0.8,
@@ -48,25 +48,25 @@ class BlogIntro extends Component
         $text = $completion->choices[0]->text;
 
 
-        $texte_base =  "Je vais te donner un texte, généres en 4 variantes différentes en français, écris \n seulement entre les variantes.
-        Voici le texte de base : \n\n";
+        $texte_base = "Je vais te donner le titre d'un article de blog et tu vas m'écrire une introduction accrocheuse pour cet article : " . $prompt . "Mentionne uniquement des choses qui pourraient concerner l'article et rien d'autre";
 
-        $chatgpt = Openai::chat()->create([
-            'model' => 'gpt-3.5-turbo',
-            'messages' => [
-                ['role' => 'user', 'content' => $texte_base . $text],
-            ],
-        ]);
+        $responses = array();
+        for ($i = 0; $i < 4; $i++) {
+            $chatgpt = OpenAI::chat()->create([
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => $texte_base],
+                ],
+            ]);
 
-        $result = array_filter(preg_split("/[\n]/", $chatgpt->choices[0]->message->content), function($value) {
-            return !empty($value) && !strstr($value, 'Variante') && !strstr($value, 'Vari');
-        });
+            array_push($responses, $chatgpt->choices[0]->message->content);
+        }
 
-        $this->responses = array_slice($result, 0, 4);
-     
+        $this->responses = $responses;
+
         $this->input = "";
 
         $this->loading = false; // mettre la variable à false pour cacher le loader;
-    
+
     }
 }

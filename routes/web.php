@@ -35,7 +35,7 @@ Route::post('/admin', [IaController::class, 'store_ia'])->name('ia.store');
 //Routes pro
 // Route::get('/pro', [IaController::class, 'pro'])->name('pro');
 Route::get('/ias/blog_intro', [FineTuningController::class, 'blog_intro'])->name('blog_intro');
-Route::post('/ias/blog_intro', [FineTuningController::class, 'blog_intro_form'])->name('blog_intro_form');
+
 
 //Ias routes
 Route::get('/ias/chatbot', [IaController::class, 'chatbot'])->name('chatbot');
