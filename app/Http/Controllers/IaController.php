@@ -307,7 +307,7 @@ class IaController extends Controller
             $path = $request->file('pdf')->store('temp');
             // Récupérer le chemin d'accès complet du fichier stocké
             $path = storage_path('app/' . $path);
-            dd($path);
+            // dd($path);
             $config = new \Smalot\PdfParser\Config();
             $config->setHorizontalOffset('');
 
