@@ -22,12 +22,7 @@ class IaController extends Controller
 
     public function ias_show()
     {
-        $ias = Ia::all();
-
-        return view('ias', 
-        [
-            'ias' => $ias,
-        ]);
+        return view('ias');
     }
 
     public function about()
