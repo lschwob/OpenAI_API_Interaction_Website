@@ -29,7 +29,7 @@
 
     <div class="flex items-center bg-white overflow-hidden p-1 rounded-2xl">
         <label class="flex-1">
-            <input wire:model="input" class="bg-white p-3 w-full rounded-l-2xl" type="text"
+            <input wire:keydown.enter='submit' wire:model="input" class="bg-white p-3 w-full rounded-l-2xl" type="text"
                    placeholder="Type something..."/>
         </label>
         <button wire:click="submit" class="bg-indigo-900 text-white px-4 py-2 rounded-2xl h-full">
