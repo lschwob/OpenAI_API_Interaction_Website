@@ -14,12 +14,21 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/9f48a31df7.js" crossorigin="anonymous"></script>
     {{--  --}}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9S1FVR956W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9S1FVR956W');
+    </script>
     <link rel="icon" type="image/png" href="{{ asset('askwiselogo.ico') }}" />
     @livewireStyles
     
     <title>AskWise</title>
 </head>
-<body class="bg-white text-black dark:bg-black scrollbar">
+<body class="text-black bg-white dark:bg-black scrollbar">
     <x-navbar></x-navbar>
     {{-- <div class="flex items-center justify-center w-56 h-56 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
         <div role="status">
